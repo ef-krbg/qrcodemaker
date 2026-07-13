@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Maker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 32px;
+      color: #2d3748;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+
+    .flex-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .zahleingabe {
+      width: 165px;
+    }
+
+    span {
+      color: #4a5568;
+      font-size: 16px;
+    }
+
+    button {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 90%;
+      margin: 10px 0;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    #qrcode {
+      margin-top: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #qrcode canvas {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>QR Code Maker</h1>
+    <input class="urleingabe" type="text" id="text-input" placeholder="Enter text or URL">
+    <div class="flex-row">
+      <input class="zahleingabe" type="number" id="size-input" placeholder="Enter size (e.g., 200)" min="100" max="500">
+      <span>px</span>
+    </div>
+  </br>
+    <button id="generate-btn">Generate QR Code</button>
+    <div id="qrcode"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+  <script>
+    document.getElementById('generate-btn').addEventListener('click', function () {
+      const textInput = document.getElementById('text-input').value;
+      const sizeInput = document.getElementById('size-input').value;
+      const qrCodeContainer = document.getElementById('qrcode');
+
+      
+      qrCodeContainer.innerHTML = '';
+
+      
+      if (textInput.trim() === '') {
+        alert('Please enter some text or a URL.');
+        return;
+      }
+
+      const size = sizeInput.trim() === '' ? 200 : parseInt(sizeInput);
+      if (size < 100 || size > 500) {
+        alert('Please enter a size between 100 and 500.');
+        return;
+      }
+
+      
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      qrCodeContainer.appendChild(canvas);
+
+     
+      QRCode.toCanvas(canvas, textInput, { width: size, margin: 2 }, function (error) {
+        if (error) {
+          console.error('Error generating QR Code:', error);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
