@@ -18,7 +18,7 @@ QR Code Maker is a single-page web app for generating QR codes on the fly. Type 
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/main.png" alt="QR Code Maker main screen" width="500">
+  <img src="screenshots/main.png" alt="QR Code Maker main screen" width="500">
 </p>
 
 ## Features
