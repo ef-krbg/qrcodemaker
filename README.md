@@ -21,8 +21,6 @@ QR Code Maker is a single-page web app for generating QR codes on the fly. Type 
   <img src="docs/screenshots/main.png" alt="QR Code Maker main screen" width="500">
 </p>
 
-> Add your own screenshot: open `index.html`, generate a code, then save it into `docs/screenshots/main.png`.
-
 ## Features
 
 - **Instant generation** — QR codes render live in the browser as canvas elements.
@@ -38,21 +36,6 @@ Click **Use it Online** above to open the app straight in your browser — nothi
 
 Click **Download** to get a `.zip` of the app. Unzip it and open `index.html` in your browser to run it offline.
 
-If you'd rather use the command line:
-
-```bash
-git clone https://github.com/ef-krbg/qrcodemaker.git
-cd qrcodemaker
-```
-
-### Enabling the online version (GitHub Pages)
-
-The "Use it Online" button only works once GitHub Pages is turned on for this repo:
-
-1. Make sure these files are uploaded to the repository.
-2. Go to **Settings → Pages**.
-3. Under "Build and deployment", set **Source** to `Deploy from a branch`, branch `main`, folder `/ (root)`.
-4. The app will be live at `https://ef-krbg.github.io/qrcodemaker/`.
 
 ## Project Structure
 
